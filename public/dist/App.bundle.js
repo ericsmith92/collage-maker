@@ -1103,6 +1103,8 @@ var submitSearch = function submitSearch(e) {
     }
   }).catch(function (error) {
     console.error(error);
+    //incase something unexpected happens
+    window.location.assign('/not-available');
   });
 };
 

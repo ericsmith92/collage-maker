@@ -27,6 +27,8 @@ const submitSearch = (e) => {
       })
       .catch(error => {
         console.error(error);
+        //incase something unexpected happens
+        window.location.assign(`/not-available`);
       });
      
 }
