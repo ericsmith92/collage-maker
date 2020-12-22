@@ -32,6 +32,7 @@ exports.stitchImages = async (req, res) => {
   .then( data => {
     let pixelX = 0;
     let pixelY = 0;
+    
     for(let i = 0; i < data.length - 1; i++){
       data[0].composite(data[i + 1], pixelX, pixelY);
 
@@ -62,7 +63,7 @@ sortUrls = (urls) => {
     const intA = parseInt(a.slice(a.lastIndexOf('/') + 1, a.indexOf('.')));
     const intB = parseInt(b.slice(b.lastIndexOf('/') + 1, b.indexOf('.')));
 
-    if (intA < intB) {
+      if (intA < intB) {
         return -1;
       }
       if (intA > intB) {
