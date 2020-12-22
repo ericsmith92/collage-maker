@@ -5,7 +5,7 @@ import { addLoader } from './loader';
 const postJson = () => {
     const stitchImgSrcs = Array.from(document.querySelectorAll('.preview_img')).map(img => img.src);
     const imgSrcsJson = Object.assign({}, stitchImgSrcs);
-    const handle = stitchBtn.dataset.handle;
+    const term = stitchBtn.dataset.term;
 
     addLoader();
     
@@ -14,11 +14,11 @@ const postJson = () => {
         url: '/stitch',
         data: {
           sources: imgSrcsJson,
-          handle
+          term
         }
       })
-      .then((response) => {
-        window.location.assign(`/download?src=${response.data.stitchedImagePath}&handle=${response.data.handle}`);
+      .then((res) => {
+        window.location.assign(`/download?src=${res.data.stitchedImagePath}&term=${res.data.term}`);
       })
       .catch((error) => {
         console.log(error);
