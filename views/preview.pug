@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h2 Rearrange if you wish
+    .preview
+        each image in previewObj.imageSources
+            img.preview_img(src=`${image}` draggable="true")
+    button.btn.stitch(data-handle=`${previewObj.term}`)
+        span Stitch It!
+        i.fa.fa-arrow-circle-up

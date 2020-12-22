@@ -1,0 +1,30 @@
+include mixins/_modal
+
+doctype html
+html(lang='en')
+  head
+    title= `${h.siteName}`
+    link(rel='stylesheet', href='/dist/style.css')
+    link(rel="shortcut icon" type="image/png" href="/images/icons/favicon.png")
+    link(rel='stylesheet', href='https://use.fontawesome.com/63b918bac0.css' media="all")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+    block header
+      header.header
+        a.header_logo(href="/")
+          span.header_logo__text IP
+          h1 Instapaper
+    .content
+      main
+        block content
+    block footer
+      footer
+        span.copyright 
+          span Made with
+          span 
+            i.fa.fa-heart
+          span  by Eric Smith
+    +modal()
+    block scripts
+      script(src="/dist/App.bundle.js")
+      script(str="https://use.fontawesome.com/63b918bac0.js")

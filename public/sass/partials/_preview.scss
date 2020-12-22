@@ -1,0 +1,16 @@
+.preview{
+    @include card;
+
+    &:after{
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    &_img{
+        float: left;
+        cursor: pointer;
+        width: 90px;
+        height: 90px;
+    }
+}
