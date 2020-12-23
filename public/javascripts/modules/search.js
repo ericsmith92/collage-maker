@@ -17,7 +17,7 @@ const submitSearch = (e) => {
       .then(res => {
         if(res.data.results.length === 12){
           addLoader();
-          const encodedImageSources = res.data.results.map( result => encodeURIComponent(result.urls.regular)).join();
+          const encodedImageSources = res.data.results.map( result => encodeURIComponent(result.urls.small)).join();
           window.location.assign(`/preview?term=${term}&srcs=${encodedImageSources}`);
           console.log(res.data.results);
         }else{

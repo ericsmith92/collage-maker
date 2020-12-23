@@ -1112,7 +1112,7 @@ var submitSearch = function submitSearch(e) {
     if (res.data.results.length === 12) {
       (0, _loader.addLoader)();
       var encodedImageSources = res.data.results.map(function (result) {
-        return encodeURIComponent(result.urls.regular);
+        return encodeURIComponent(result.urls.small);
       }).join();
       window.location.assign('/preview?term=' + term + '&srcs=' + encodedImageSources);
       console.log(res.data.results);
