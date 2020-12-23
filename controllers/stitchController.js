@@ -1,30 +1,8 @@
 const Jimp = require('jimp');
-const fs = require('fs');
-
-exports.resizeAndWriteThumbnails = async (req, res, next) => {
-  
-  const imageSrcs = Object.values(req.body.sources);
-  
-  for(let i = 0; i < imageSrcs.length; i++){
-    await Jimp.read(imageSrcs[i])
-              .then(img => {
-                  return img
-                  .resize(300, 300)
-                  .write(`public/images/user-images/${req.body.term}/${i}.jpg`);
-              })
-              .catch( err => {
-                  console.error(err);
-    });
-  }
-
-  next();
-}
 
 exports.stitchImages = async (req, res) => {
-
-  const urls = fs.readdirSync(`public/images/user-images/${req.body.term}/`).map(file => `public/images/user-images/${req.body.term}/${file}`);
-  const sortedUrls = sortUrls(urls);
-  const jimps = [`public/images/canvas/canvas.png`, ...sortedUrls].map(img => Jimp.read(img));
+  const imageSrcs = Object.values(req.body.sources);
+  const jimps = [`public/images/canvas/canvas-large.png`, ...imageSrcs].map(img => Jimp.read(img));
 
   Promise.all(jimps).then( _ => {
     return Promise.all(jimps);
@@ -46,18 +24,19 @@ exports.stitchImages = async (req, res) => {
       }
     }
     */
+
    data[0].composite(data[1],0, 0);
-   data[0].composite(data[2],300, 0);
-   data[0].composite(data[3],600, 0);
-   data[0].composite(data[4],0, 300);
-   data[0].composite(data[5],300, 300);
-   data[0].composite(data[6],600, 300);
-   data[0].composite(data[7],0, 600);
-   data[0].composite(data[8],300, 600);
-   data[0].composite(data[9],600, 600);
-   data[0].composite(data[10],0, 900);
-   data[0].composite(data[11],300, 900);
-   data[0].composite(data[12],600, 900);
+   data[0].composite(data[2],400, 0);
+   data[0].composite(data[3],800, 0);
+   data[0].composite(data[4],0, 400);
+   data[0].composite(data[5],400, 400);
+   data[0].composite(data[6],800, 400);
+   data[0].composite(data[7],0, 800);
+   data[0].composite(data[8],400, 800);
+   data[0].composite(data[9],800, 800);
+   data[0].composite(data[10],0, 1200);
+   data[0].composite(data[11],400, 1200);
+   data[0].composite(data[12],800, 1200);
     
     const term = req.body.term;
     const stitchedImagePath = `public/images/user-images/${term}/${Date.now()}.png`
@@ -70,24 +49,4 @@ exports.stitchImages = async (req, res) => {
    });
 })
 .catch(err => console.log(err));
-}
-
-sortUrls = (urls) => {
-  
-  const sortedUrls = urls.sort((a, b) => {
-    
-    const intA = parseInt(a.slice(a.lastIndexOf('/') + 1, a.indexOf('.')));
-    const intB = parseInt(b.slice(b.lastIndexOf('/') + 1, b.indexOf('.')));
-
-      if (intA < intB) {
-        return -1;
-      }
-      if (intA > intB) {
-        return 1;
-      }
-    
-      return 0;
-  });
-
-  return sortedUrls;
 }

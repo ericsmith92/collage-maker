@@ -10,8 +10,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 router.get('/', homeController.homePage);
 router.get('/preview', previewController.renderPreview);
 
-router.post('/stitch', catchErrors(stitchController.resizeAndWriteThumbnails), 
-                       catchErrors(stitchController.stitchImages));
+router.post('/stitch', catchErrors(stitchController.stitchImages));
 
 router.get('/download', downloadController.renderDownload);
 router.post('/download', downloadController.downloadImage);
