@@ -9,8 +9,6 @@ exports.stitchImages = async (req, res) => {
   })
   .then( data => {
 
-
-    
     let pixelX = 0;
     let pixelY = 0;
     
@@ -23,21 +21,6 @@ exports.stitchImages = async (req, res) => {
         pixelY = pixelY + 400;
       }
     }
-    
-   /*
-   data[0].composite(data[1].resize(400, 400),0, 0);
-   data[0].composite(data[2].resize(400, 400),400, 0);
-   data[0].composite(data[3].resize(400, 400),800, 0);
-   data[0].composite(data[4].resize(400, 400),0, 400);
-   data[0].composite(data[5].resize(400, 400),400, 400);
-   data[0].composite(data[6].resize(400, 400),800, 400);
-   data[0].composite(data[7].resize(400, 400),0, 800);
-   data[0].composite(data[8].resize(400, 400),400, 800);
-   data[0].composite(data[9].resize(400, 400),800, 800);
-   data[0].composite(data[10].resize(400, 400),0, 1200);
-   data[0].composite(data[11].resize(400, 400),400, 1200);
-   data[0].composite(data[12].resize(400, 400),800, 1200);
-   */
 
     const term = req.body.term;
     const stitchedImagePath = `public/images/user-images/${term}/${Date.now()}.png`
