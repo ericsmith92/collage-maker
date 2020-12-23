@@ -3,6 +3,10 @@ extends layout
 include mixins/_searchForm
 
 block content
-  h2 Search Term
+  h2 Search Term 
+    sup.info
+      i.fa.fa-info-circle
+      .info_blurb 
+        .inner here is some info about how to use this application
   +searchForm()
   .search-error

@@ -2144,9 +2144,12 @@ var _modal = __webpack_require__(11);
 
 var _stitch = __webpack_require__(14);
 
+var _info = __webpack_require__(36);
+
 var path = window.location.pathname;
 
 if (path === '/') {
+    _info.info.addEventListener('click', _info.toggleInfo);
     _search.searchForm.addEventListener('submit', _search.submitSearch);
     _modal.modalNoShow.addEventListener('click', _modal.modifyLocalStorage);
     _modal.modalCloseBtn.addEventListener('click', _modal.toggleModal);
@@ -2174,6 +2177,26 @@ if (path === '/preview' || path === '/download') {
 
 _modal.modalNoShow.addEventListener('click', _modal.modifyLocalStorage);
 _modal.modalCloseBtn.addEventListener('click', _modal.toggleModal);
+
+/***/ }),
+/* 35 */,
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var info = document.querySelector('.info');
+
+var toggleInfo = function toggleInfo() {
+    info.classList.toggle('active');
+};
+
+exports.info = info;
+exports.toggleInfo = toggleInfo;
 
 /***/ })
 /******/ ]);

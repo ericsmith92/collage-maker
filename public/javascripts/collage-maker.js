@@ -17,9 +17,12 @@ import {modalCloseBtn,
 
 import { stitchBtn, postJson } from './modules/stitch';
 
+import { info, toggleInfo } from './modules/info';
+
 const path = window.location.pathname;
 
 if(path === '/'){
+    info.addEventListener('click', toggleInfo);
     searchForm.addEventListener('submit', submitSearch);
     modalNoShow.addEventListener('click', modifyLocalStorage);
     modalCloseBtn.addEventListener('click', toggleModal);
